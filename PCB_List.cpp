@@ -48,14 +48,14 @@ void PCB_List::setStatus(vector<string>v)
     }
     for (it = PCB_container.begin(); it != PCB_container.end(); it++)
     {
-        if (it->name == v[0])
+        if (it->PID == stoi(v[0]))
         {
             it->setStatuss(s);
             cout << "Ustwiono status. " << endl;
         }
         else
         {
-            cout << "Nie ma procesu o takiej nazwie." << endl;
+            cout << "Nie ma procesu o takim PID." << endl;
         }
     }
 
@@ -65,14 +65,14 @@ void PCB_List::setPriority(vector<string>v)
 {
     for (it = PCB_container.begin(); it != PCB_container.end(); it++)
     {
-        if (it->name == v[0])
+        if (it->PID == stoi(v[0]))
         {
             it->setPriority(stoi(v[1]));
             cout << "Ustawiono priorytet. " << endl;
         }
         else
         {
-            cout << "Nie ma procesu o takiej nazwie." << endl;
+            cout << "Nie ma procesu o takim PID." << endl;
         }
     }
 
@@ -91,7 +91,7 @@ void PCB_List::display(vector<string>v)	//show
     bool czy = false;
     for (it = PCB_container.begin(); it != PCB_container.end(); it++)
     {
-        if (it->name == v[0])
+        if (it->PID == stoi(v[0]))
         {
             it->displayOne();
             czy = true;
@@ -99,7 +99,7 @@ void PCB_List::display(vector<string>v)	//show
     }
     if (czy == false)
     {
-        cout << "Proces o podanej nazwie nie istnieje." << endl;
+        cout << "Nie ma procesu o takim PID." << endl;
     }
 }
 
@@ -114,15 +114,15 @@ void PCB_List::kill(vector<string>v)
             return;
         }
     }
-    cout << "Nie ma procesu o takiej nazwie." << endl;
+    cout << "Nie ma procesu o takim PID." << endl;
 }
 
 void PCB_List::hlep()
 {
     cout << "CP [nazwa procesu] [program] [priorytet] [pamiec] - tworzenie procesu." << endl;
-    cout << "SS [nazwa procesu] [status] - zmiana statusu." << endl;
-    cout << "SP [nazwa procesu] [priorytet] - zmiana priorytetu." << endl;
-    cout << "SHOW [nazwa procesu] - wyswietlanie procesu." << endl;
+    cout << "SS [PID] [status] - zmiana statusu." << endl;
+    cout << "SP [PID] [priorytet] - zmiana priorytetu." << endl;
+    cout << "SHOW [PID] - wyswietlanie procesu." << endl;
     cout << "TASKLIST - wyswietlanie wszystkich procesow." << endl;
     cout << "KILL [PID] - zabija proces." << endl;
 }
