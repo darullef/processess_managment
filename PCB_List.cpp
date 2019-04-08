@@ -125,5 +125,6 @@ void PCB_List::hlep()
     cout << "SHOW [PID] - wyswietlanie procesu." << endl;
     cout << "TASKLIST - wyswietlanie wszystkich procesow." << endl;
     cout << "KILL [PID] - zabija proces." << endl;
+    
 }
 
